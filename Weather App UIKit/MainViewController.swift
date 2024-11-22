@@ -10,8 +10,11 @@ import UIKit
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
+        print(">>> viewDidLoad()")
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+
+        self.view.backgroundColor = .systemBlue
     }
 
 
