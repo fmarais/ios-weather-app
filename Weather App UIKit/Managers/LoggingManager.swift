@@ -9,7 +9,7 @@ class LoggingManager {
             category: "App"
         )
     }
-
+    
     static func debug(_ message: String) {
         AppDelegate.logger.debug("\(message)")
     }

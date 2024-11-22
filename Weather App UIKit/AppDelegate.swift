@@ -1,20 +1,25 @@
-//
-//  AppDelegate.swift
-//  Weather App UIKit
-//
-//  Created by francois on 2024/11/19.
-//
-
 import UIKit
 import CoreData
+import os
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-
+    static var logger = Logger()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+
+        // init logging (static)
+        AppDelegate.logger = LoggingManager.initLogger()
+
+        // core data storage
+        if let directoryLocation = FileManager.default.urls(for: .libraryDirectory, in: .userDomainMask).last {
+            LoggingManager.debug("Documents Directory: \(directoryLocation)Application Support")
+        }
+
+        // reset db on fresh start
+        CoreDataManager.deleteLocationData(CoreDataManager.ENTITY)
+
         return true
     }
 

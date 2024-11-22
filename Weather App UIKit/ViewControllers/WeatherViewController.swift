@@ -1,39 +1,24 @@
-import UIKit
+import Foundation
+import os
+import SwiftUI
+import CoreLocation
 
-class WeatherViewController: UIViewController {
+class WeatherViewControler: ObservableObject {
+    var apiManager = ApiManager()
+    var latitude, longitude: String?
 
-
-
-
-//    let locationButton: UIButton = {
-//        let button = UIButton()
-//        button.setTitle("Get current location", for: .normal)
-//        button.backgroundColor = .systemBlue
-//        button.addTarget(self, action: #selector(didClickLocationButton), for: .touchUpInside)
-//        return button
-//    }()
-
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        view.backgroundColor = .systemGray
-
-//        navigationItem.hidesBackButton = true
-
-//        view.addSubview(locationButton)
-//        locationButton.translatesAutoresizingMaskIntoConstraints = false
-//        locationButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-//        locationButton.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-//        locationButton.widthAnchor.constraint(equalToConstant: 200).isActive = true
-//        locationButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
+    // api data
+    init(_ latitude: String, _ longitude: String) {
+        LoggingManager.debug("WeatherViewControler init() location")
+        self.latitude = latitude
+        self.longitude = longitude
     }
 
-//    @objc func didClickLocationButton() {
-//        LoggingManager.debug(">>> didClickLocationButton()")
-//    }
-
-
-
+    // json data
+    init(_ currentWeather: CurrentWeatherModel?, _ fiveDayWeather: FiveDayForecastWeatherModel?) {
+        LoggingManager.debug("WeatherViewControler init() currentWeather, fiveDayWeather")
+        self.latitude = nil // load using response data
+        self.longitude = nil // load using response data
+    }
 }
 

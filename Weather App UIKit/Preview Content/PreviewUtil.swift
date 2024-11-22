@@ -1,9 +1,10 @@
 import Foundation
 
-// local datasets
-let currentWeather: CurrentWeatherModel = load("currentWeatherData.json")
-//let fiveDayForecastData: FiveDayForecastResponse = load("fiveDayForecastData.json")
+// local json datasets
+let currentWeatherJson: CurrentWeatherModel = load("currentWeatherData.json")
+let fiveDayForecastJson: FiveDayForecastWeatherModel = load("fiveDayForecastData.json")
 
+// load our json data and return an object of dynamic type
 func load<T: Decodable>(_ filename: String) -> T {
     let data: Data
     

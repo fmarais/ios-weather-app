@@ -1,35 +1,60 @@
 import Foundation
 import SwiftUI
 
-struct WeatherRow: View {
-    var logo: String
-    var name: String
-    var value: String
+struct MainWeatherComponent: View {
+    var currentWeather: CurrentWeatherModel?
 
     var body: some View {
-        HStack(spacing: 20) {
-            Image(systemName: logo)
-                .font(.title2)
-                .frame(width: 20, height: 20)
-                .padding()
-                .background(Color(hue: 1.0, saturation: 0.0, brightness: 0.888))
-                .cornerRadius(50)
-
-
-            VStack(alignment: .leading, spacing: 8) {
-                Text(name)
-                    .font(.caption)
-
-                Text(value)
+        VStack {
+            VStack(alignment: .leading, spacing: 5) {
+                Text(currentWeather?.name ?? "")
                     .bold()
                     .font(.title)
+
+                Text("Today, \(Date().formatted(.dateTime.month().day().hour().minute()))")
+                    .fontWeight(.light)
             }
+            .frame(maxWidth: .infinity, alignment: .leading)
+
+            Spacer()
+
+            VStack {
+                HStack {
+                    VStack(spacing: 20) {
+                        Image(systemName: "cloud")
+                            .font(.system(size: 40))
+
+                        Text("\(currentWeather?.weather[0].main ?? "")")
+                    }
+                    .frame(width: 150, alignment: .leading)
+
+                    Spacer()
+
+                    Text(currentWeather?.main.feelsLike.roundDouble() ?? "" + "°")
+                        .font(.system(size: 100))
+                        .fontWeight(.bold)
+                        .padding()
+                }
+
+                Spacer()
+                    .frame(height:  80)
+
+                AsyncImage(url: URL(string: "https://cdn.pixabay.com/photo/2020/01/24/21/33/city-4791269_960_720.png")) { image in
+                    image
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 350)
+                } placeholder: {
+                    ProgressView()
+                }
+
+                Spacer()
+            }
+            .frame(maxWidth: .infinity, alignment: .trailing)
         }
+        .padding()
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .foregroundStyle(.white)
     }
 }
 
-struct WeatherRow_Previews: PreviewProvider {
-    static var previews: some View {
-        WeatherRow(logo: "thermometer", name: "Feels like", value: "8°")
-    }
-}
