@@ -13,6 +13,14 @@ public struct FiveDayForecastWeatherModel: Decodable {
 
 struct WeatherList: Decodable {
     let main: WeatherMain
+    let weather: [WeatherData]
+    let dtTxt: String
+
+    enum CodingKeys: String, CodingKey {
+        case main
+        case weather
+        case dtTxt = "dt_txt"
+    }
 }
 
 struct WeatherData: Decodable {
@@ -20,6 +28,19 @@ struct WeatherData: Decodable {
     let main: String
     let description: String
     let icon: String
+
+    var weatherCondition: String{
+        switch id {
+        case 200...622:
+            return "rain"
+        case 701...781:
+            return "cloud"
+        case 800:
+            return "sun"
+        default:
+            return "cloud"
+        }
+    }
 }
 
 struct WeatherMain: Decodable {

@@ -20,17 +20,9 @@ struct WeatherView: View {
     var body: some View {
         if let _ = currentWeather {
             let _ = LoggingManager.debug("WeatherView, Loaded data from api")
-
-            ZStack(alignment: .leading) {
-                MainWeatherComponent(currentWeather: currentWeather)
-                BottomWeatherComponent(currentWeather: currentWeather)
-            }
-            .edgesIgnoringSafeArea(.bottom)
-            .background(Color(hue: 0.656, saturation: 0.787, brightness: 0.354))
-            .preferredColorScheme(.dark)
+                MainWeatherComponent(currentWeather: currentWeather, fiveDayWeather: fiveDayWeather)
         } else {
             let _ = LoggingManager.debug("WeatherView, loading")
-
             // async calls to get data from api
             CustomProgressView().task {
                 guard let latitudeSafe = controller.latitude,

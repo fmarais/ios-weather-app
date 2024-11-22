@@ -3,58 +3,28 @@ import SwiftUI
 
 struct MainWeatherComponent: View {
     var currentWeather: CurrentWeatherModel?
+    var fiveDayWeather: FiveDayForecastWeatherModel?
 
     var body: some View {
-        VStack {
-            VStack(alignment: .leading, spacing: 5) {
-                Text(currentWeather?.name ?? "")
-                    .bold()
-                    .font(.title)
-
-                Text("Today, \(Date().formatted(.dateTime.month().day().hour().minute()))")
-                    .fontWeight(.light)
-            }
-            .frame(maxWidth: .infinity, alignment: .leading)
-
-            Spacer()
-
-            VStack {
-                HStack {
-                    VStack(spacing: 20) {
-                        Image(systemName: "cloud")
-                            .font(.system(size: 40))
-
-                        Text("\(currentWeather?.weather[0].main ?? "")")
-                    }
-                    .frame(width: 150, alignment: .leading)
-
-                    Spacer()
-
-                    Text(currentWeather?.main.feelsLike.roundDouble() ?? "" + "°")
-                        .font(.system(size: 100))
-                        .fontWeight(.bold)
-                        .padding()
+            VStack(spacing: 0) {
+                if currentWeather?.weather.first?.weatherCondition == "sun" {
+                    TopWeatherInner(currentWeather: currentWeatherJson, imageName: "main_sun", color: Color(.sunny))
+                    BottomWeatherInner(currentWeather: currentWeather, fiveDayWeather: fiveDayWeather, color: Color(.sunny))
                 }
-
-                Spacer()
-                    .frame(height:  80)
-
-                AsyncImage(url: URL(string: "https://cdn.pixabay.com/photo/2020/01/24/21/33/city-4791269_960_720.png")) { image in
-                    image
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 350)
-                } placeholder: {
-                    ProgressView()
+                
+                if currentWeather?.weather.first?.weatherCondition == "cloud" {
+                    TopWeatherInner(currentWeather: currentWeatherJson, imageName: "main_cloud", color: Color(.cloudy))
+                    BottomWeatherInner(currentWeather: currentWeather, fiveDayWeather: fiveDayWeather, color: Color(.cloudy))
                 }
-
-                Spacer()
+                
+                if currentWeather?.weather.first?.weatherCondition == "rain" {
+                    TopWeatherInner(currentWeather: currentWeatherJson, imageName: "main_rain", color: Color(.rainy))
+                    BottomWeatherInner(currentWeather: currentWeather, fiveDayWeather: fiveDayWeather, color: Color(.rainy))
+                }
             }
-            .frame(maxWidth: .infinity, alignment: .trailing)
-        }
-        .padding()
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .foregroundStyle(.white)
     }
 }
 
+#Preview {
+    MainWeatherComponent(currentWeather: currentWeatherJson, fiveDayWeather: fiveDayForecastJson)
+}
