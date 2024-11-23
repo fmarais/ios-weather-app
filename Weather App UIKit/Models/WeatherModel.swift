@@ -15,7 +15,7 @@ struct WeatherList: Decodable {
     let main: WeatherMain
     let weather: [WeatherData]
     let dtTxt: String
-
+    
     enum CodingKeys: String, CodingKey {
         case main
         case weather
@@ -28,7 +28,7 @@ struct WeatherData: Decodable {
     let main: String
     let description: String
     let icon: String
-
+    
     var weatherCondition: String{
         switch id {
         case 200...622:
@@ -50,7 +50,7 @@ struct WeatherMain: Decodable {
     let tempMax: Double
     let pressure: Double
     let humidity: Double
-
+    
     enum CodingKeys: String, CodingKey {
         case temp
         case feelsLike = "feels_like"
