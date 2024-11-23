@@ -1,6 +1,6 @@
 ### Running the project
 - Git clone this repo `git clone git@github.com:fmarais/ios-weather-app.git`
-- Open the project workspace
+- Open the project `.workspace`
 - Add the api key provided in the email to the `info.plist` `WEATHER_API_KEY`
 - Build and run the project
 
