@@ -1,10 +1,3 @@
-//
-//  Weather_App_UIKitUITests.swift
-//  Weather App UIKitUITests
-//
-//  Created by francois on 2024/11/19.
-//
-
 import XCTest
 
 final class Weather_App_UIKitUITests: XCTestCase {

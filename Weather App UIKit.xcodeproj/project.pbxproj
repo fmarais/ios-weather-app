@@ -65,15 +65,11 @@
 		};
 		0FC352FE2CECE6EF00491A7A /* Weather App UIKitTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-			);
 			path = "Weather App UIKitTests";
 			sourceTree = "<group>";
 		};
 		0FC353082CECE6EF00491A7A /* Weather App UIKitUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-			);
 			path = "Weather App UIKitUITests";
 			sourceTree = "<group>";
 		};
@@ -139,7 +135,6 @@
 				166CB1D7F67E14D414454ACD /* Pods-Weather App UIKitTests.debug.xcconfig */,
 				EA09978B91CBFA422AB749EB /* Pods-Weather App UIKitTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
