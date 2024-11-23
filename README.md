@@ -19,8 +19,11 @@
 <img width="256" alt="Screenshot 2024-11-22 at 20 25 35" src="https://github.com/user-attachments/assets/fdb75f46-8673-4e97-8775-599416ab93d5">
 <img width="266" alt="Screenshot 2024-11-22 at 20 25 52" src="https://github.com/user-attachments/assets/a1cd20ab-e8bd-44bd-93e5-502e05d981ca">
 
-## Test run
+## App test run
 https://github.com/user-attachments/assets/56feaff6-50fe-4747-aec6-57e9c399287e
+
+## Example unit test
+<img width="492" alt="image" src="https://github.com/user-attachments/assets/4555fb31-9121-430f-b245-9a48c28672df">
 
 ## Test
 - Allow your location on app startup
