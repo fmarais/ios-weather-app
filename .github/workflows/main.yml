@@ -19,7 +19,7 @@ jobs:
       - name: Set up Xcode
         uses: actions/setup-xcode@v2
         with:
-          xcode-version: '15.x'
+          xcode-version: '14.x'
 
       - name: Build and test
         run: |
