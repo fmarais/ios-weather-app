@@ -23,4 +23,4 @@ jobs:
 
       - name: Build and test
         run: |
-          xcodebuild test -scheme 'Weather App UIKit' -destination -destination 'generic/platform=iOS'
+          xcodebuild test -scheme 'Weather App UIKit' -destination 'generic/platform=iOS'
