@@ -1,0 +1,26 @@
+name: Unit Tests
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+
+      - name: Set up Xcode
+        uses: actions/setup-xcode@v2
+        with:
+          xcode-version: '15.x'
+
+      - name: Build and test
+        run: |
+          xcodebuild test -scheme 'Weather App UIKit' -destination 'platform=iOS Simulator,name=iPhone 14,OS=latest'
