@@ -30,3 +30,7 @@ https://github.com/user-attachments/assets/56feaff6-50fe-4747-aec6-57e9c399287e
 - View the daily and forecast weather
 - Press back, click the blue button a 2nd time
 - The app should immediatly move to the WeatherView since it has saved the lat/lng coordinates to the device
+
+## CI/CD using Gitgub Actions
+<img width="1327" alt="image" src="https://github.com/user-attachments/assets/9d6163ed-792e-4a03-9d62-d8d93f62b4e2">
+
